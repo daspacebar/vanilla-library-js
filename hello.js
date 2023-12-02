@@ -27,7 +27,8 @@ function addArrayToTable(){
             <td>${book.pages}</td>
             <button onClick=deleteBook(${index})>Delete Book</button>
         `;
-        tableBody.appendChild(row);
+        //tableBody.appendChild(row);
+        tableBody.insertAdjacentElement('afterbegin', row);
     })
 }
 
@@ -53,7 +54,7 @@ function addBookToArray(){
         // table population with updated push
         addArrayToTable();
 
-        // clear the input fields --- not working?
+        // clear the input fields
         titleInput.value = "";
         authorInput.value = "";
         pageseInput.value = "";
