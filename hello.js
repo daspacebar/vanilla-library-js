@@ -1,9 +1,5 @@
 const myLibrary = [
-    {
-        title: "Harry Potter",
-        author: "Niket Kumar",
-        pages: 345,
-    }
+
     // add more books here -- for testing DOM only, input fields are added to dynamically add books now
 ]
 
@@ -25,7 +21,8 @@ function addArrayToTable(){
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.pages}</td>
-            <button onClick=deleteBook(${index})>Delete Book</button>
+            <td><button onClick=editBook(${index})>Edit</button></td>
+            <td><button onClick=deleteBook(${index})>Delete</button></td>
         `;
         //tableBody.appendChild(row);
         tableBody.insertAdjacentElement('afterbegin', row);
@@ -33,35 +30,58 @@ function addArrayToTable(){
 }
 
 // push the values gathered from input to the array
-function addBookToArray(){
+function addOrEditBookInArray(){
     // DOMs for input fields
     const titleInput = document.getElementById('title');
     const authorInput = document.getElementById('author');
-    const pageseInput = document.getElementById('pages');
+    const pagesInput = document.getElementById('pages');
 
     // Encapsulating value in variables
     const title = titleInput.value;
     const author = authorInput.value;
-    const pages = pageseInput.value;
+    const pages = pagesInput.value;
 
     // condition to check if all the fields are filled in
     if(title && author && pages){
         const newBook = new Book(title, author, pages);
-        
-        //push the input value to the array
-        myLibrary.push(newBook);
 
+        if(editIndex !== null){
+            myLibrary[editIndex] = newBook;
+            // editIndex = null;
+        }
+        else{
+            //push the input value to the array
+            myLibrary.push(newBook);    
+        }
+        
         // table population with updated push
         addArrayToTable();
 
         // clear the input fields
         titleInput.value = "";
         authorInput.value = "";
-        pageseInput.value = "";
+        pagesInput.value = "";
     }
     else{
         alert(`Please fill in all the fields to add this book in library.`)
     }
+}
+
+let editIndex = null;
+
+function editBook(index){
+    const titleInput = document.getElementById('title');
+    const authorInput = document.getElementById('author');
+    const pagesInput = document.getElementById('pages');
+
+    const selectedBook = myLibrary[index];
+
+    titleInput.value = selectedBook.title;
+    authorInput.value = selectedBook.author;
+    pagesInput.value = selectedBook.pages;
+
+    editIndex = index;
+
 }
 
 // handling book deletion from the array (table)
