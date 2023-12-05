@@ -5,40 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niket's Library</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f8f8;
-            color: #333;
-        }
-
-        h1 {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        p {
-            text-align: center;
-        }
-
-        div {
-            text-align: center;
-            margin: 20px;
-        }
-
-        label {
-            display: inline-block;
-            width: 80px;
-            margin-right: 10px;
-        }
-
-        input {
-            padding: 8px;
-            margin-bottom: 10px;
-            width: 200px;
-        }
-
+/* 
         button {
             padding: 10px;
             background-color: #4caf50;
@@ -75,13 +42,57 @@
             table {
                 width: 100%;
             }
+        } */
+        h1{
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+        .input-div{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+        }
+        input{
+            padding: 8px;
+            margin-bottom: 14px;
+        }
+        label{
+            margin-bottom: 8px;
+        }
+        button{
+            padding: 12px;
+            width: 100%;
+            background-color: bisque;
+            transition: all 0.2s;
+            
+        }
+        button:hover{
+            background-color: rgb(131, 255, 131);
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
 <body>
     <h1>Niket's Library</h1>
     <p>This is Niket's private library where he has all his books added</p>
-    <div>
+    <div class="input-div">
         <label for="title">Title:</label>
         <input type="text" id="title" required>
     
